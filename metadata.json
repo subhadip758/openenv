@@ -1,0 +1,5 @@
+{
+  "name": "OfficeOpsEnv - AI Office Simulator",
+  "description": "A complete OpenEnv-compatible environment simulating real-world office operations including email triage, scheduling, and support.",
+  "requestFramePermissions": []
+}

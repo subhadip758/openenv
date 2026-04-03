@@ -1,0 +1,11 @@
+name: OfficeOpsEnv
+version: "1.0.0"
+description: "An OpenEnv-compatible environment simulating real-world office operations."
+entrypoint: "uvicorn main:app --host 0.0.0.0 --port 8000"
+tasks:
+  - email_triage
+  - meeting_scheduling
+  - customer_support
+docker:
+  build: docker build -t officeopsenv .
+  run: docker run -p 8000:8000 officeopsenv
