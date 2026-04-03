@@ -1,3 +1,13 @@
+---
+title: OfficeOpsEnv - AI Office Simulator
+emoji: 🏢
+colorFrom: blue
+colorTo: indigo
+sdk: docker
+pinned: false
+app_port: 7860
+---
+
 # OfficeOpsEnv - OpenEnv AI Office Simulator
 
 OfficeOpsEnv is a complete OpenEnv-compatible environment simulating real-world office operations. It features an email inbox, a calendar scheduling system, a customer support ticket system, and a pending tasks list. The environment challenges AI agents to classify emails, schedule meetings without conflicts, respond to tickets, and clean database records.

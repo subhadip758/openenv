@@ -1,4 +1,7 @@
 from fastapi import FastAPI, HTTPException, Query
+from fastapi.staticfiles import StaticFiles
+from fastapi.responses import FileResponse
+import os
 from pydantic import BaseModel
 from typing import Dict, Any, List, Optional
 
@@ -103,3 +106,14 @@ def run_baseline_endpoint():
         }
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
+
+# Serve static files from the React app (if dist exists)
+if os.path.exists("dist"):
+    app.mount("/", StaticFiles(directory="dist", html=True), name="static")
+
+    @app.get("/{path_name:path}")
+    async def catch_all(path_name: str):
+        # Allow API routes to work
+        if path_name.startswith("reset") or path_name.startswith("step") or path_name.startswith("state") or path_name.startswith("tasks") or path_name.startswith("grader") or path_name.startswith("baseline"):
+            raise HTTPException(status_code=404)
+        return FileResponse("dist/index.html")
