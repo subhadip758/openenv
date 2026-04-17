@@ -1,7 +1,11 @@
 {
-  "functions": {
-    "api/*.py": {
-      "runtime": "vercel-python@0.5.0"
-    }
-  }
+  "rewrites": [
+    { "source": "/reset", "destination": "/api/index" },
+    { "source": "/step", "destination": "/api/index" },
+    { "source": "/state", "destination": "/api/index" },
+    { "source": "/tasks", "destination": "/api/index" },
+    { "source": "/grader", "destination": "/api/index" },
+    { "source": "/baseline", "destination": "/api/index" },
+    { "source": "/(.*)", "destination": "/$1" }
+  ]
 }

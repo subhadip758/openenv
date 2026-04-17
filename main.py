@@ -107,8 +107,8 @@ def run_baseline_endpoint():
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
-# Serve static files from the React app (if dist exists)
-if os.path.exists("dist"):
+# Serve static files from the React app (if dist exists and not on Vercel)
+if os.path.exists("dist") and not os.environ.get("VERCEL"):
     app.mount("/", StaticFiles(directory="dist", html=True), name="static")
 
     @app.get("/{path_name:path}")
